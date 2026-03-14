@@ -147,15 +147,6 @@ html {
   scroll-behavior: smooth;
 }
 
-a [href*="lovable.dev"], iframe[src*="lovable.dev"], d iv[style*="Edit with Lovable"], . lovable-badge {
-display: none !important;
-opacity: 0 !important;
-visibility: hidden !important;
-pointer-events: none !important;
-position: absolute !important;
-z-index: -9999 !important;
-}
-
 /* Animated gradient border */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
@@ -187,4 +178,8 @@ z-index: -9999 !important;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
   background-size: 200% 100%;
   animation: shimmer 2.5s ease-in-out infinite;
+}
+
+#lovable-badge {
+  display: none;
 }
