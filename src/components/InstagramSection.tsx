@@ -9,44 +9,70 @@ const images = [feed1, feed2, feed3, feed4];
 
 const InstagramSection = () => {
   return (
-    <section id="instagram" className="py-24 md:py-32">
-      <div className="container">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-section font-display font-bold text-foreground">Acompanhe no Instagram</h2>
-          <p className="mt-4 text-muted-foreground text-lg">Conteúdos, orientações e novidades sobre crédito.</p>
-        </div>
+    <section id="instagram" className="py-24 md:py-32 gradient-section relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div className="container relative">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
+            @solucoes_financeiras_imbituva
+          </span>
+          <h2 className="text-section font-display font-extrabold text-foreground">
+            Acompanhe no{" "}
+            <span className="bg-gradient-to-r from-accent to-accent-glow bg-clip-text text-transparent">Instagram</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground text-lg">Conteúdos, orientações e novidades sobre crédito.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
           {images.map((img, i) => (
-            <motion.div
+            <motion.a
               key={i}
-              initial={{ y: 12, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+              href="https://www.instagram.com/solucoes_financeiras_imbituva"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ y: 30, opacity: 0, scale: 0.95 }}
+              whileInView={{ y: 0, opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="aspect-square rounded-2xl overflow-hidden shadow-financial group"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="aspect-square rounded-2xl overflow-hidden shadow-financial group relative"
             >
               <img
                 src={img}
                 alt={`Post Instagram ${i + 1}`}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy"
               />
-            </motion.div>
+              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-colors duration-300 flex items-center justify-center">
+                <Instagram size={32} strokeWidth={1.5} className="text-primary-foreground opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100" />
+              </div>
+            </motion.a>
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-12"
+        >
           <a
             href="https://www.instagram.com/solucoes_financeiras_imbituva"
             target="_blank"
             rel="noopener noreferrer"
-            className="h-12 px-8 rounded-full bg-primary text-primary-foreground font-medium inline-flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="h-12 px-8 rounded-full gradient-primary text-primary-foreground font-semibold inline-flex items-center gap-2 hover:scale-[1.03] active:scale-[0.97] transition-all shadow-glow-primary"
           >
             <Instagram size={20} strokeWidth={1.5} />
             Seguir no Instagram
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
